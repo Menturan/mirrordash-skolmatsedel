@@ -35,9 +35,12 @@ No API key is needed. In the module's settings:
 
 ## Data sources
 
-Both are open and need no key. The module fetches through the mirror's own fetch helper and keeps an
-answer for four hours, so menus are fetched a few times a day. If the network is down, the last good
-menu stays on the screen.
+Both are open and need no key. The module fetches through the mirror's own fetch helper, which keeps
+every answer on disk. Each school's menu is fetched **once per calendar day**: on the first redraw after
+midnight (not 24 hours after the last fetch), and at once when there is nothing saved yet, or when
+you pick another school. The card is redrawn every five minutes for the lunch switch, without fetching.
+If a fetch fails, the last good menu stays on the screen and the fetch is retried every 15 minutes at
+the earliest. A saved answer from today survives a restart of the mirror.
 
 - **Skolmaten** (skolmaten.se): the only address called is the open RSS feed of one school,
   `https://skolmaten.se/api/4/rss/week/<school>`. It holds **the current week only**; the feed takes no

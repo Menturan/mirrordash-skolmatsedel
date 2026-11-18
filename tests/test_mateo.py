@@ -43,7 +43,7 @@ def test_a_day_without_meals_is_left_out():
 @pytest.mark.asyncio
 async def test_fetch_menu_asks_for_the_dates_wanted(make_net):
     net = make_net(json=(fixture_json("mateo_days_913.json"), None))
-    menu = await mateo.fetch_menu(net, "913", date(2026, 11, 16), date(2026, 11, 20))
+    menu = await mateo.fetch_menu(net, "913", date(2026, 11, 16), date(2026, 11, 20), 3600)
     assert len(menu.days) == 5 and menu.error is None
     assert net.fetch_json.call_args.args == ("https://meny-api.mateo.se/api/v1/days/913",)
     assert net.fetch_json.call_args.kwargs["params"] == {"from": "2026-11-16", "to": "2026-11-20"}
@@ -51,7 +51,7 @@ async def test_fetch_menu_asks_for_the_dates_wanted(make_net):
 
 @pytest.mark.asyncio
 async def test_fetch_menu_reports_an_error_without_data(make_net):
-    menu = await mateo.fetch_menu(make_net(json=(None, "http 500")), "913", date(2026, 11, 16), date(2026, 11, 16))
+    menu = await mateo.fetch_menu(make_net(json=(None, "http 500")), "913", date(2026, 11, 16), date(2026, 11, 16), 3600)
     assert menu.days == {} and menu.error == "http 500"
 
 
@@ -68,3 +68,10 @@ async def test_the_lists_ask_mateo(make_net):
 async def test_a_list_that_cannot_load_says_so_to_the_owner(make_net):
     with pytest.raises(ValueError, match="Couldn't load the schools from Mateo \\(offline\\)"):
         await mateo.list_schools(make_net(json=(None, "offline")), "gavle")
+
+
+@pytest.mark.asyncio
+async def test_an_old_answer_after_a_failed_call_is_marked_stale(make_net):
+    menu = await mateo.fetch_menu(make_net(json=(fixture_json("mateo_days_913.json"), "offline")), "913",
+                                  date(2026, 11, 16), date(2026, 11, 20), 0)
+    assert menu.days and menu.stale

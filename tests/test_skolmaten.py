@@ -45,7 +45,7 @@ def test_an_item_without_dishes_or_date_is_left_out():
 @pytest.mark.asyncio
 async def test_fetch_menu_asks_only_for_the_schools_rss(make_net):
     net = make_net(raw=(fixture_bytes("skolmaten_week.xml"), None))
-    menu = await skolmaten.fetch_menu(net, "borgarskolan", WEEK, WEEK)
+    menu = await skolmaten.fetch_menu(net, "borgarskolan", WEEK, WEEK, 3600)
     assert menu.error is None and len(menu.days) == 5
     assert net.fetch.call_args.args == ("https://skolmaten.se/api/4/rss/week/borgarskolan",)
     net.fetch_json.assert_not_called()
@@ -53,9 +53,9 @@ async def test_fetch_menu_asks_only_for_the_schools_rss(make_net):
 
 @pytest.mark.asyncio
 async def test_fetch_menu_reports_an_error_without_data(make_net):
-    menu = await skolmaten.fetch_menu(make_net(raw=(None, "offline")), "x", WEEK, WEEK)
+    menu = await skolmaten.fetch_menu(make_net(raw=(None, "offline")), "x", WEEK, WEEK, 3600)
     assert menu.days == {} and menu.error == "offline"
-    menu = await skolmaten.fetch_menu(make_net(raw=(b"<rss", None)), "x", WEEK, WEEK)
+    menu = await skolmaten.fetch_menu(make_net(raw=(b"<rss", None)), "x", WEEK, WEEK, 3600)
     assert menu.error == "invalid"
 
 

@@ -1,10 +1,11 @@
 import asyncio
 import logging
-from datetime import datetime
+from datetime import datetime, time
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from mirrordash_skolmatsedel.providers import PROVIDERS
-from mirrordash_skolmatsedel.providers.base import Net
+from mirrordash_skolmatsedel.providers.base import Menu, Net
+from mirrordash_skolmatsedel.providers.daily_cache import DailyMenus
 from mirrordash_skolmatsedel.schedule import NEXT_DAY, parse_switch_time, shown_days
 from mirrordash_skolmatsedel.view import SchoolMenu, build_days
 
@@ -22,8 +23,9 @@ class SkolmatsedelModule:
         # The mirror adds self.render_template, self.translate, self.fetch and self.fetch_json after __init__.
         self.config = config
         self.name = "mirrordash_skolmatsedel"
-        # Drawing is cheap: the providers keep their answers for a few hours (CACHE_SECONDS), so the
-        # network is asked only a few times a day while the days still change on time.
+        # Drawing is cheap: DailyMenus keeps each school's menu for the whole calendar day, so the
+        # network is asked about once a day while the days still change on time.
+        self.menus = DailyMenus()
         self.interval = REDRAW_SECONDS
         self.schools = config.get("schools") or []
         self.days_ahead = config.get("days_ahead", DEFAULT_DAYS_AHEAD)
@@ -51,13 +53,22 @@ class SkolmatsedelModule:
         return [row for row in self.schools
                 if row.get("provider") in PROVIDERS and (row.get("school") or {}).get("id")]
 
+    async def menu_of(self, row: dict, now: datetime) -> Menu:
+        """The school's menu: fetched once per day, whatever the card shows at the moment.
+
+        The dates asked for are the same all day (today up to the last day the card can reach after the
+        switch), so the 13:00 switch never needs another fetch."""
+        provider, school = row["provider"], row["school"]["id"]
+        last = shown_days(datetime.combine(now.date(), time(23, 59)), self.days_ahead, NEXT_DAY)[-1].day
+        return await self.menus.get(
+            (provider, school), now,
+            lambda max_age: PROVIDERS[provider].fetch_menu(self.net(), school, now.date(), last, max_age))
+
     async def render(self) -> str:
         now = self.now()
         shown = shown_days(now, self.days_ahead, self.after_lunch, self.switch_time)
         rows = self.configured_schools()
-        menus = await asyncio.gather(*(
-            PROVIDERS[row["provider"]].fetch_menu(self.net(), row["school"]["id"], shown[0].day, shown[-1].day)
-            for row in rows))
+        menus = await asyncio.gather(*(self.menu_of(row, now) for row in rows))
         schools = [SchoolMenu(row.get("short_name") or row["school"]["name"], menu)
                    for row, menu in zip(rows, menus)]
         days = build_days(shown, schools, now.date(), self.translate)

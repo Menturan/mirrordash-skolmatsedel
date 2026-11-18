@@ -51,10 +51,10 @@ async def test_two_schools_from_two_providers_are_shown_day_by_day():
 
 
 @pytest.mark.asyncio
-async def test_mateo_is_asked_for_exactly_the_days_shown():
+async def test_mateo_is_asked_for_today_up_to_the_last_day_reachable_after_the_switch():
     module = make_module(schools=[FRIDHEM], days_ahead=3, mateo=(fixture_json("mateo_days_913.json"), None))
     await module.render()
-    assert module.fetch_json.call_args.kwargs["params"] == {"from": "2026-11-18", "to": "2026-11-20"}
+    assert module.fetch_json.call_args.kwargs["params"] == {"from": "2026-11-18", "to": "2026-11-23"}
 
 
 @pytest.mark.asyncio
@@ -117,3 +117,84 @@ async def test_a_half_filled_row_is_ignored():
 
 def test_an_unknown_time_zone_falls_back_to_stockholm():
     assert str(SkolmatsedelModule({"globals": {"timezone": "Nowhere/Land"}}).tz) == "Europe/Stockholm"
+
+
+# ── How often the menus are fetched ──
+
+DAY_ONE = datetime(2026, 11, 18, 9, 0)
+
+
+async def render_at(module, now):
+    module.now = lambda: now.replace(tzinfo=module.tz)
+    return await module.render()
+
+
+def fetch_count(module):
+    return module.fetch_json.await_count
+
+
+@pytest.mark.asyncio
+async def test_redraws_the_same_day_do_not_fetch_again_even_over_the_lunch_switch():
+    module = make_module(schools=[FRIDHEM], mateo=(fixture_json("mateo_days_913.json"), None))
+    for hour, minute in [(9, 0), (9, 5), (12, 55), (13, 0), (23, 55)]:
+        await render_at(module, DAY_ONE.replace(hour=hour, minute=minute))
+    assert fetch_count(module) == 1
+
+
+@pytest.mark.asyncio
+async def test_after_midnight_the_menu_is_fetched_again_once():
+    module = make_module(schools=[FRIDHEM], mateo=(fixture_json("mateo_days_913.json"), None))
+    await render_at(module, datetime(2026, 11, 18, 23, 58))
+    await render_at(module, datetime(2026, 11, 19, 0, 1))  # only minutes later, but a new day
+    await render_at(module, datetime(2026, 11, 19, 0, 6))
+    assert fetch_count(module) == 2
+    assert module.fetch_json.call_args.kwargs["max_age"] == 60  # a saved answer from today may be reused
+
+
+@pytest.mark.asyncio
+async def test_nothing_saved_means_fetch_at_once_and_a_new_school_is_fetched_right_away():
+    module = make_module(schools=[FRIDHEM], mateo=(fixture_json("mateo_days_913.json"), None),
+                         skolmaten=(fixture_bytes("skolmaten_week.xml"), None))
+    await render_at(module, DAY_ONE)
+    assert fetch_count(module) == 1
+    module.schools = [FRIDHEM, BORGAR]  # a school is added in the settings
+    await render_at(module, DAY_ONE.replace(minute=5))
+    assert fetch_count(module) == 1 and module.fetch.await_count == 1
+    module.schools = [{**FRIDHEM, "school": {"id": "914", "name": "Other"}}]
+    await render_at(module, DAY_ONE.replace(minute=10))
+    assert fetch_count(module) == 2
+
+
+@pytest.mark.asyncio
+async def test_a_failure_keeps_the_last_good_menu_and_retries_only_every_15_minutes():
+    good = (fixture_json("mateo_days_913.json"), None)
+    module = make_module(schools=[FRIDHEM], mateo=good)
+    await render_at(module, datetime(2026, 11, 18, 9, 0))
+    first = (await render_at(module, datetime(2026, 11, 18, 9, 5)))["days"]
+    # The next day the network is down: the mirror hands back its old answer together with an error.
+    module.fetch_json.return_value = (fixture_json("mateo_days_913.json"), "offline")
+    day_two = datetime(2026, 11, 19, 9, 0)
+    shown = await render_at(module, day_two)
+    assert shown["days"] and shown["error"] is None  # old data still shown
+    assert fetch_count(module) == 2
+    await render_at(module, day_two.replace(minute=5))
+    await render_at(module, day_two.replace(minute=14))
+    assert fetch_count(module) == 2  # no retry within 15 minutes
+    await render_at(module, day_two.replace(minute=15))
+    assert fetch_count(module) == 3  # retry after 15 minutes
+    module.fetch_json.return_value = good
+    await render_at(module, day_two.replace(minute=30))
+    await render_at(module, day_two.replace(minute=35))
+    assert fetch_count(module) == 4  # it worked: the rest of the day is quiet
+    assert first
+
+
+@pytest.mark.asyncio
+async def test_a_failure_with_no_data_at_all_is_retried_after_15_minutes_and_then_recovers():
+    module = make_module(schools=[FRIDHEM])  # offline, nothing saved
+    assert (await render_at(module, DAY_ONE))["error"] == "Couldn't load the lunch menus"
+    await render_at(module, DAY_ONE.replace(minute=5))
+    assert fetch_count(module) == 1
+    module.fetch_json.return_value = (fixture_json("mateo_days_913.json"), None)
+    shown = await render_at(module, DAY_ONE.replace(minute=15))
+    assert fetch_count(module) == 2 and shown["days"]

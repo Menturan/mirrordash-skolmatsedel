@@ -7,7 +7,7 @@
 from datetime import date
 from urllib.parse import quote
 
-from mirrordash_skolmatsedel.providers.base import CACHE_SECONDS, Menu, Net, unique
+from mirrordash_skolmatsedel.providers.base import Menu, Net, unique
 
 BASE_URL = "https://meny-api.mateo.se/api/v1"
 UNIT_TYPES = {"school": None, "preschool": "Preschool"}  # the units to pick from, and their dimmed detail
@@ -52,9 +52,9 @@ async def list_schools(net: Net, municipality_id: str) -> list[dict]:
     return parse_units(data)
 
 
-async def fetch_menu(net: Net, school_id: str, first: date, last: date) -> Menu:
+async def fetch_menu(net: Net, school_id: str, first: date, last: date, max_age: float) -> Menu:
     params = {"from": first.isoformat(), "to": last.isoformat()}
-    data, error = await net.fetch_json(f"{BASE_URL}/days/{quote(school_id, safe='')}", params=params, max_age=CACHE_SECONDS)
+    data, error = await net.fetch_json(f"{BASE_URL}/days/{quote(school_id, safe='')}", params=params, max_age=max_age)
     if not isinstance(data, list):
         return Menu(error=error or "invalid")
-    return Menu(days=parse_days(data))
+    return Menu(days=parse_days(data), stale=error is not None)

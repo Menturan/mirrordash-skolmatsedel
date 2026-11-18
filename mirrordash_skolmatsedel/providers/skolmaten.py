@@ -12,7 +12,7 @@ from html import unescape
 from urllib.parse import quote
 
 from mirrordash_skolmatsedel import schools
-from mirrordash_skolmatsedel.providers.base import CACHE_SECONDS, Menu, Net, unique
+from mirrordash_skolmatsedel.providers.base import Menu, Net, unique
 
 RSS_URL = "https://skolmaten.se/api/4/rss/week/{slug}"
 LINE_BREAK = re.compile(r"<br\s*/?>", re.IGNORECASE)
@@ -56,12 +56,12 @@ async def list_schools(net: Net, municipality_id: str) -> list[dict]:
     return await asyncio.to_thread(schools.school_choices, municipality_id)
 
 
-async def fetch_menu(net: Net, school_id: str, first: date, last: date) -> Menu:
+async def fetch_menu(net: Net, school_id: str, first: date, last: date, max_age: float) -> Menu:
     """The school's week. The feed has no date range: first and last are not used."""
-    data, error = await net.fetch(RSS_URL.format(slug=quote(school_id, safe="")), max_age=CACHE_SECONDS)
+    data, error = await net.fetch(RSS_URL.format(slug=quote(school_id, safe="")), max_age=max_age)
     if data is None:
         return Menu(error=error or "offline")
     try:
-        return Menu(days=parse_week(data))
+        return Menu(days=parse_week(data), stale=error is not None)
     except ET.ParseError:
         return Menu(error="invalid")
