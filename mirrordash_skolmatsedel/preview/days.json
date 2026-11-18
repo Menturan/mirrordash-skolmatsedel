@@ -1,0 +1,362 @@
+[
+ {
+  "id": 1000,
+  "units_id": 1,
+  "date": "2026-11-16T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 1,
+    "days_id": 1000,
+    "name": "Fiskgratäng med dillpotatis",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 2,
+    "days_id": 1000,
+    "name": "Grönsaksgratäng med dillpotatis",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1001,
+  "units_id": 1,
+  "date": "2026-11-17T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 11,
+    "days_id": 1001,
+    "name": "Pasta med tomatsås och ost",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 12,
+    "days_id": 1001,
+    "name": "Pasta med köttfärssås",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1002,
+  "units_id": 1,
+  "date": "2026-11-18T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 21,
+    "days_id": 1002,
+    "name": "Kycklinggryta med ris",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 22,
+    "days_id": 1002,
+    "name": "Kikärtsgryta med ris",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1003,
+  "units_id": 1,
+  "date": "2026-11-19T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 31,
+    "days_id": 1003,
+    "name": "Pannkakor med sylt och grädde",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 32,
+    "days_id": 1003,
+    "name": "Pannkakor med sylt och grädde",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1004,
+  "units_id": 1,
+  "date": "2026-11-20T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 41,
+    "days_id": 1004,
+    "name": "Köttbullar med gräddsås och potatismos",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 42,
+    "days_id": 1004,
+    "name": "Linsbullar med gräddsås och potatismos",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1005,
+  "units_id": 1,
+  "date": "2026-11-23T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 51,
+    "days_id": 1005,
+    "name": "Fiskgratäng med dillpotatis",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 52,
+    "days_id": 1005,
+    "name": "Grönsaksgratäng med dillpotatis",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1006,
+  "units_id": 1,
+  "date": "2026-11-24T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 61,
+    "days_id": 1006,
+    "name": "Pasta med tomatsås och ost",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 62,
+    "days_id": 1006,
+    "name": "Pasta med köttfärssås",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1007,
+  "units_id": 1,
+  "date": "2026-11-25T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 71,
+    "days_id": 1007,
+    "name": "Kycklinggryta med ris",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 72,
+    "days_id": 1007,
+    "name": "Kikärtsgryta med ris",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1008,
+  "units_id": 1,
+  "date": "2026-11-26T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 81,
+    "days_id": 1008,
+    "name": "Pannkakor med sylt och grädde",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 82,
+    "days_id": 1008,
+    "name": "Pannkakor med sylt och grädde",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1009,
+  "units_id": 1,
+  "date": "2026-11-27T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 91,
+    "days_id": 1009,
+    "name": "Köttbullar med gräddsås och potatismos",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 92,
+    "days_id": 1009,
+    "name": "Linsbullar med gräddsås och potatismos",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1010,
+  "units_id": 1,
+  "date": "2026-11-30T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 101,
+    "days_id": 1010,
+    "name": "Fiskgratäng med dillpotatis",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 102,
+    "days_id": 1010,
+    "name": "Grönsaksgratäng med dillpotatis",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1011,
+  "units_id": 1,
+  "date": "2026-12-01T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 111,
+    "days_id": 1011,
+    "name": "Pasta med tomatsås och ost",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 112,
+    "days_id": 1011,
+    "name": "Pasta med köttfärssås",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1012,
+  "units_id": 1,
+  "date": "2026-12-02T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 121,
+    "days_id": 1012,
+    "name": "Kycklinggryta med ris",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 122,
+    "days_id": 1012,
+    "name": "Kikärtsgryta med ris",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1013,
+  "units_id": 1,
+  "date": "2026-12-03T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 131,
+    "days_id": 1013,
+    "name": "Pannkakor med sylt och grädde",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 132,
+    "days_id": 1013,
+    "name": "Pannkakor med sylt och grädde",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ },
+ {
+  "id": 1014,
+  "units_id": 1,
+  "date": "2026-12-04T00:00:00.000Z",
+  "deviation": null,
+  "meals": [
+   {
+    "id": 141,
+    "days_id": 1014,
+    "name": "Köttbullar med gräddsås och potatismos",
+    "type": "Lunch",
+    "allergens": [],
+    "labels": []
+   },
+   {
+    "id": 142,
+    "days_id": 1014,
+    "name": "Linsbullar med gräddsås och potatismos",
+    "type": "Lunch vegetarisk",
+    "allergens": [],
+    "labels": []
+   }
+  ]
+ }
+]

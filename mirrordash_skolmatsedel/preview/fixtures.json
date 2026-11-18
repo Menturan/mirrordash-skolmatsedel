@@ -1,0 +1,7 @@
+{
+  "captured": "2026-11-16",
+  "answers": {
+    "skolmaten.se/api/4/rss/week/*": "week.xml",
+    "meny-api.mateo.se/api/v1/days/*": "days.json"
+  }
+}
