@@ -22,3 +22,6 @@ Thumbs.db
 # App local logs or cli tools cache
 .antigravitycli/
 .kilo/
+
+# uv and the module's local mirror
+.ruff_cache/
