@@ -1,0 +1,40 @@
+[
+  {
+    "id": 139734,
+    "units_id": 395,
+    "date": "2026-11-16T00:00:00.000Z",
+    "deviation": null,
+    "meals": [
+      {
+        "id": 659166618,
+        "days_id": 139734,
+        "name": "Kyckling (svensk) i currysås samt ris/bulgur (eko)",
+        "type": "Lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659166621,
+        "days_id": 139734,
+        "name": "Quorn med röd curry, kokosmjölk samt bulgur/ris (eko)",
+        "type": "Lunch alternativ",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659166623,
+        "days_id": 139734,
+        "name": "Salladsbuffé, Knäckebröd (eko) Mjölk (eko)",
+        "type": "Tillbehör lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      }
+    ]
+  }
+]

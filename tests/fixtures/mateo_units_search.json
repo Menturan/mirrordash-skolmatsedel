@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1142,
+    "name": "Fridhems förskola",
+    "type": "preschool",
+    "organizations": {
+      "slug": "angelholm",
+      "name": "Ängelholm"
+    }
+  },
+  {
+    "id": 913,
+    "name": "Fridhemsskolan",
+    "type": "school",
+    "organizations": {
+      "slug": "gavle",
+      "name": "Gävle"
+    }
+  }
+]

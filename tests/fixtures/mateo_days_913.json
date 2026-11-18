@@ -1,0 +1,142 @@
+[
+  {
+    "id": 138969,
+    "units_id": 913,
+    "date": "2026-11-16T00:00:00.000Z",
+    "deviation": null,
+    "meals": [
+      {
+        "id": 659158190,
+        "days_id": 138969,
+        "name": "Chili con carne serveras med gräddfil och ris",
+        "type": "Lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659158193,
+        "days_id": 138969,
+        "name": "Chili sin carne serveras med gräddfil och ris",
+        "type": "Lunch vegetarisk",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 138971,
+    "units_id": 913,
+    "date": "2026-11-17T00:00:00.000Z",
+    "deviation": null,
+    "meals": [
+      {
+        "id": 659158212,
+        "days_id": 138971,
+        "name": "Kycklingfärslimpa serveras med gräddsås och kokt potatis",
+        "type": "Lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659158214,
+        "days_id": 138971,
+        "name": "Färslimpa serveras med gräddsås och kokt potatis",
+        "type": "Lunch vegetarisk",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 138972,
+    "units_id": 913,
+    "date": "2026-11-18T00:00:00.000Z",
+    "deviation": null,
+    "meals": [
+      {
+        "id": 659158231,
+        "days_id": 138972,
+        "name": "Pankopanerad fisk serveras med tartarsås och kokt potatis",
+        "type": "Lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659158234,
+        "days_id": 138972,
+        "name": "Kökets zucchinibiffar serveras med kall örtsås och kokt potatis",
+        "type": "Lunch vegetarisk",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 138973,
+    "units_id": 913,
+    "date": "2026-11-19T00:00:00.000Z",
+    "deviation": null,
+    "meals": [
+      {
+        "id": 659158251,
+        "days_id": 138973,
+        "name": "Krämig ost- och skinksås med pasta",
+        "type": "Lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659158255,
+        "days_id": 138973,
+        "name": "Ost - och broccolisås med pasta",
+        "type": "Lunch vegetarisk",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      }
+    ]
+  },
+  {
+    "id": 138974,
+    "units_id": 913,
+    "date": "2026-11-20T00:00:00.000Z",
+    "deviation": null,
+    "meals": [
+      {
+        "id": 659158279,
+        "days_id": 138974,
+        "name": "Quornbugare med dressing, bröd, picklad lök, grönsaker och potatisklyftor",
+        "type": "Lunch",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      },
+      {
+        "id": 659158282,
+        "days_id": 138974,
+        "name": "Quornbugare med dressing, bröd, picklad lök, grönsaker och potatisklyftor",
+        "type": "Lunch vegetarisk",
+        "image": null,
+        "declaration": null,
+        "allergens": [],
+        "labels": []
+      }
+    ]
+  }
+]

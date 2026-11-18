@@ -1,0 +1,47 @@
+[
+  {
+    "id": 4,
+    "counties_id": 2,
+    "slug": "karlshamn",
+    "name": "Karlshamn",
+    "bucket": "https://objects.dc-fbg1.glesys.net/mateo.karlshamn",
+    "logo": null,
+    "settings_weeks": 1,
+    "settings_information": null,
+    "settings_pictures": false,
+    "settings_labels": false,
+    "settings_allergens": false,
+    "settings_mealtypes": false,
+    "settings_declaration": false
+  },
+  {
+    "id": 14,
+    "counties_id": 3,
+    "slug": "leksand",
+    "name": "Leksand",
+    "bucket": "https://objects.dc-fbg1.glesys.net/mateo.leksand",
+    "logo": "leksand.png",
+    "settings_weeks": 1,
+    "settings_information": "Med reservation för ändring",
+    "settings_pictures": true,
+    "settings_labels": false,
+    "settings_allergens": false,
+    "settings_mealtypes": false,
+    "settings_declaration": false
+  },
+  {
+    "id": 26,
+    "counties_id": 5,
+    "slug": "gavle",
+    "name": "Gävle",
+    "bucket": "https://objects.dc-fbg1.glesys.net/mateo.gavle",
+    "logo": "gavle.png",
+    "settings_weeks": 1,
+    "settings_information": null,
+    "settings_pictures": false,
+    "settings_labels": false,
+    "settings_allergens": false,
+    "settings_mealtypes": false,
+    "settings_declaration": false
+  }
+]

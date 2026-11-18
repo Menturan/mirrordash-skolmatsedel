@@ -1,0 +1,53 @@
+{
+  "id": 26,
+  "counties_id": 5,
+  "slug": "gavle",
+  "name": "Gävle",
+  "bucket": "https://objects.dc-fbg1.glesys.net/mateo.gavle",
+  "logo": "gavle.png",
+  "settings_weeks": 1,
+  "settings_information": null,
+  "settings_pictures": false,
+  "settings_labels": false,
+  "settings_allergens": false,
+  "settings_mealtypes": false,
+  "settings_declaration": false,
+  "units": [
+    {
+      "id": 913,
+      "organizations_id": 26,
+      "link_id": 2,
+      "name": "Fridhemsskolan",
+      "type": "school",
+      "period": 5,
+      "information": null
+    },
+    {
+      "id": 914,
+      "organizations_id": 26,
+      "link_id": 3,
+      "name": "Hemlingborg Skola",
+      "type": "school",
+      "period": 5,
+      "information": null
+    },
+    {
+      "id": 679,
+      "organizations_id": 26,
+      "link_id": 5,
+      "name": "Hemlingborg Vård- och omsorgsboende",
+      "type": "retirementhome",
+      "period": 7,
+      "information": null
+    },
+    {
+      "id": 966,
+      "organizations_id": 26,
+      "link_id": 4,
+      "name": "Hemlingborgs Förskola",
+      "type": "preschool",
+      "period": 5,
+      "information": null
+    }
+  ]
+}

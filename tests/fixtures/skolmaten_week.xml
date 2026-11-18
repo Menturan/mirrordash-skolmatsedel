@@ -1,0 +1,48 @@
+
+              <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+                  <channel>
+                  <atom:link href="https://skolmaten.se/borgarskolan" rel="self" type="application/rss+xml" />
+                      <title>Skolmaten - Borgarskolan</title>
+                      <description>Menyinformation för skolan</description>
+                      <link>https://skolmaten.se/borgarskolan</link>
+                      <language>sv</language>
+                      <copyright>© https://skolmaten.se</copyright>
+                      
+              <item>
+                  <title>Måndag - Vecka 47</title>
+                  <description><![CDATA[Broccoli- och ostsås med pasta, <br/>Bolognese på sojafärs med pasta]]></description>
+                  <link>https://skolmaten.se/borgarskolan</link>
+                  <guid isPermaLink="false">7d44d03f-4f25-43ca-93aa-91e06d14d1da</guid>
+                  <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
+               </item>
+              <item>
+                  <title>Tisdag - Vecka 47</title>
+                  <description><![CDATA[Quornburgare med bröd, dressing, klyftpotatis, <br/>Kycklingburgare med bröd, dressing och klyftpotatis]]></description>
+                  <link>https://skolmaten.se/borgarskolan</link>
+                  <guid isPermaLink="false">fe7dc881-ad2d-4957-bcde-363602142aad</guid>
+                  <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+               </item>
+              <item>
+                  <title>Onsdag - Vecka 47</title>
+                  <description><![CDATA[Kikärtsgryta serveras med ris, <br/>Fiskgryta med lax och sej, serveras med ris]]></description>
+                  <link>https://skolmaten.se/borgarskolan</link>
+                  <guid isPermaLink="false">19bd6798-ddfc-4829-9202-4131a1c5158e</guid>
+                  <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+               </item>
+              <item>
+                  <title>Torsdag - Vecka 47</title>
+                  <description><![CDATA[Krämig tomatsoppa, örtolja, tunna pannkakor och sylt, <br/>Blomkålssoppa, örtolja, tunna pannkakor och sylt]]></description>
+                  <link>https://skolmaten.se/borgarskolan</link>
+                  <guid isPermaLink="false">b53f693e-262e-42f3-bf28-27ca6b5805f2</guid>
+                  <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+               </item>
+              <item>
+                  <title>Fredag - Vecka 47</title>
+                  <description><![CDATA[Morotsbiff med mango- currydressing och bulgur, <br/>Kryddstekt kyckling med mango-currydressing och bulgur]]></description>
+                  <link>https://skolmaten.se/borgarskolan</link>
+                  <guid isPermaLink="false">dedb9729-e274-41e8-a7fa-1a4871626ba2</guid>
+                  <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+               </item>
+                  </channel>
+              </rss>
+          
