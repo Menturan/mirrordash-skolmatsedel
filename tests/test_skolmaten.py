@@ -34,6 +34,10 @@ def test_the_date_is_the_pubdate_in_either_format():
     assert skolmaten.parse_date("not a date") is None
 
 
+def test_a_school_without_a_menu_gives_no_days():
+    assert skolmaten.parse_week(fixture_bytes("skolmaten_no_menu.xml")) == {}
+
+
 def test_an_item_without_dishes_or_date_is_left_out():
     feed = (b"<rss><channel>"
             b"<item><description>Soup</description><pubDate>nonsense</pubDate></item>"

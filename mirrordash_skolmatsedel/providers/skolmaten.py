@@ -17,6 +17,7 @@ from mirrordash_skolmatsedel.providers.base import Menu, Net, unique
 RSS_URL = "https://skolmaten.se/api/4/rss/week/{slug}"
 LINE_BREAK = re.compile(r"<br\s*/?>", re.IGNORECASE)
 EDGE_JUNK = re.compile(r"^[\s,]+|[\s,]+$")  # spaces and commas around a dish
+DAY_TITLE = re.compile(r"^(Måndag|Tisdag|Onsdag|Torsdag|Fredag|Lördag|Söndag) - ")  # e.g. "Måndag - Vecka 47"
 
 
 def split_dishes(description: str) -> list[str]:
@@ -41,6 +42,9 @@ def parse_week(feed: bytes) -> dict[date, list[str]]:
     """The dishes per date of one RSS answer. Items without a date or without dishes are left out."""
     days: dict[date, list[str]] = {}
     for item in ET.fromstring(feed.strip()).iter("item"):
+        # "Ingen meny tillgänglig" has a pubDate of the fetch time, not a menu day: skip it by its title.
+        if not DAY_TITLE.match(item.findtext("title") or ""):
+            continue
         day = parse_date(item.findtext("pubDate") or "")
         dishes = split_dishes(item.findtext("description") or "")
         if day and dishes:
