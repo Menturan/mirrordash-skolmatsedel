@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "School Lunch",
+  "description": "School lunch menus, day by day, from Skolmaten or Mateo.",
+  "type": "object",
+  "properties": {
+    "schools": {
+      "type": "array",
+      "title": "Schools",
+      "description": "The schools to show. Pick the provider (where the school publishes its menu), then the municipality and the school.",
+      "default": [],
+      "items": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string",
+            "default": "skolmaten",
+            "enum": ["skolmaten", "mateo"],
+            "enum_titles": ["Skolmaten", "Mateo"],
+            "title": "Provider",
+            "description": "Where the school's menu is published: skolmaten.se or Mateo. If you can't find the school in one, try the other."
+          },
+          "municipality": {
+            "type": "object",
+            "format": "list",
+            "title": "Municipality",
+            "description": "The school's municipality."
+          },
+          "school": {
+            "type": "object",
+            "format": "list",
+            "title": "School",
+            "description": "The school or preschool."
+          },
+          "short_name": {
+            "type": "string",
+            "title": "Short Name",
+            "description": "Optional. Shown instead of the school's name, for example a child's name. Leave empty to show the school's name.",
+            "maxLength": 40
+          }
+        },
+        "required": ["provider", "municipality", "school"]
+      }
+    },
+    "days_ahead": {
+      "type": "integer",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 10,
+      "title": "Days To Show",
+      "description": "How many school days to show, counted from the first day shown (weekends are skipped). Days without a menu are left out. Skolmaten publishes only the current week, so with Skolmaten you see at most the days left of this week; Mateo publishes further ahead."
+    },
+    "after_lunch": {
+      "type": "string",
+      "default": "next_day",
+      "enum": ["next_day", "all_day", "dim"],
+      "enum_titles": [
+        "After lunch, start from the next school day",
+        "Today stays all day",
+        "After lunch, today is dimmed"
+      ],
+      "title": "After Lunch",
+      "description": "What to do with today's menu once lunch is over."
+    },
+    "switch_time": {
+      "type": "string",
+      "format": "time",
+      "default": "13:00",
+      "title": "Lunch Is Over At",
+      "description": "The time when lunch counts as over. Blank means 13:00.",
+      "show_if": {"after_lunch": ["next_day", "dim"]}
+    },
+    "show_header": {
+      "type": "boolean",
+      "default": true,
+      "title": "Show Header",
+      "description": "Show or hide the module's title."
+    }
+  },
+  "required": ["schools"]
+}

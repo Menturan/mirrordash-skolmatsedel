@@ -1,0 +1,13 @@
+{
+  "title": "Skolmatsedel",
+  "today": "Idag",
+  "tomorrow": "Imorgon",
+  "monday": "Måndag",
+  "tuesday": "Tisdag",
+  "wednesday": "Onsdag",
+  "thursday": "Torsdag",
+  "friday": "Fredag",
+  "saturday": "Lördag",
+  "sunday": "Söndag",
+  "error_fetching": "Kunde inte läsa skolmatsedlarna"
+}

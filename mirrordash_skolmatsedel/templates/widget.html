@@ -1,0 +1,102 @@
+<div class="sm-container">
+    {% if show_header %}
+    <h2 class="module-header">{{ translations.get("title", "School lunch") }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <div class="module-message"><i data-lucide="cloud-off"></i><span>{{ error }}</span></div>
+    {% else %}
+        <div class="sm-groups">
+            {% for day in days %}
+                <div class="sm-group{{ ' is-dimmed' if day.dimmed else '' }}">
+                    <div class="sm-day-header">
+                        <span class="sm-day-label">{{ day.label }}</span>
+                        {% if day.sub %}<span class="sm-day-sub">{{ day.sub }}</span>{% endif %}
+                    </div>
+                    <div class="sm-rows">
+                        {% for school in day.schools %}
+                            <div class="sm-row">
+                                {% if school.name %}<div class="sm-school">{{ school.name }}</div>{% endif %}
+                                {% for dish in school.dishes %}
+                                    <div class="sm-dish">{{ dish }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<!-- The header and message come from modules.css; only the menu's own look is here -->
+<style>
+.sm-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 380px;
+}
+
+.sm-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.sm-day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    border-bottom: 1px solid var(--color-dimmed-charcoal);
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.sm-day-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-standard-gray);
+}
+
+.sm-day-sub {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-dimmed-charcoal);
+}
+
+.sm-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sm-school {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-standard-gray);
+    margin-bottom: 2px;
+}
+
+.sm-dish {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-high-contrast);
+    word-break: break-word;
+}
+
+.sm-dish + .sm-dish {
+    margin-top: 2px;
+}
+
+/* Today after lunch, when the owner chose to keep it but dimmed */
+.is-dimmed .sm-dish { color: var(--color-dimmed-charcoal); }
+.is-dimmed .sm-school { color: var(--color-dimmed-charcoal); }
+</style>
