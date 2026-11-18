@@ -7,6 +7,7 @@ Only the rendered public pages are used (skolmaten.se is a JavaScript app,
 so a headless Chrome renders each page). Pages are loaded one at a time with
 a short pause in between.
 """
+import argparse
 import json
 import re
 import subprocess
@@ -148,12 +149,30 @@ def write_json(provinces, path):
     path.write_text(text, encoding="utf-8")
 
 
-def main():
+def confirmed(assume_yes):
+    """The crawl takes about 13 minutes: ask first, so it never starts by accident."""
+    if assume_yes:
+        return True
+    answer = input("Crawling skolmaten.se takes about 13 minutes and replaces the bundled school list. Start? [y/N] ")
+    return answer.strip().lower() in ("y", "yes")
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Rebuild the bundled school list (opt-in; about 13 minutes).")
+    parser.add_argument("--yes", action="store_true", help="start without asking")
+    args = parser.parse_args(argv)
+    if not confirmed(args.yes):
+        print("Nothing changed.", file=sys.stderr)
+        return 1
     failed = []
     provinces = crawl(failed)
+    if failed:  # keep the old list rather than a list with holes
+        print(f"Failed pages, the school list was NOT changed: {failed}", file=sys.stderr)
+        return 1
     write_json(provinces, OUTPUT)
-    print(f"Failed pages: {failed}", file=sys.stderr)
+    print(f"Wrote {OUTPUT}", file=sys.stderr)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
