@@ -1,6 +1,6 @@
 [project]
 name = "mirrordash-skolmatsedel"
-version = "0.9.1"
+version = "0.9.2"
 description = "School lunch menus from Skolmaten and Mateo"
 requires-python = ">=3.14"
 license = "MIT"
