@@ -49,7 +49,8 @@
       "minimum": 1,
       "maximum": 10,
       "title": "Days To Show",
-      "description": "How many school days to show, counted from the first day shown (weekends are skipped). Days without a menu are left out. Skolmaten publishes only the current week, so with Skolmaten you see at most the days left of this week; Mateo publishes further ahead."
+      "description": "How many school days to show, counted from the first day shown.",
+      "help": "Weekends are skipped. Days without a menu are left out. Skolmaten publishes only the current week, so with Skolmaten you see at most the days left of this week; Mateo publishes further ahead."
     },
     "after_lunch": {
       "type": "string",
