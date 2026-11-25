@@ -31,7 +31,6 @@ class SkolmatsedelModule:
         self.days_ahead = config.get("days_ahead", DEFAULT_DAYS_AHEAD)
         self.after_lunch = config.get("after_lunch", NEXT_DAY)
         self.switch_time = parse_switch_time(config.get("switch_time"))  # blank or bad: 13:00
-        self.show_header = config.get("show_header", True)
         self.tz = self.read_timezone(config.get("globals", {}).get("timezone", "Europe/Stockholm"))
 
     @staticmethod
@@ -78,7 +77,7 @@ class SkolmatsedelModule:
             return ""  # nothing to show: an empty answer hides the whole card
         else:
             error = None
-        return self.render_template("widget.html", days=days, error=error, show_header=self.show_header)
+        return self.render_template("widget.html", days=days, error=error)
 
     # ── The choices of the settings' list fields (asked with the unsaved form, one row at a time) ──
 

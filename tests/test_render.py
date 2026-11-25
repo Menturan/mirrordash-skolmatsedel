@@ -22,7 +22,7 @@ def draw():
                       autoescape=select_autoescape(["html"]))
 
     def draw_it(**values):
-        values = {"days": DAYS, "error": None, "show_header": True, **values}
+        values = {"days": DAYS, "error": None, "show_header": True, "heading": "", **values}
         return env.get_template("widget.html").render(translations=SWEDISH, **values)
     return draw_it
 
@@ -72,3 +72,7 @@ def test_the_template_uses_the_core_variables_not_copied_colors():
     assert not re.search(r"#[0-9a-fA-F]{3,6}\b", source.split("<style>")[1])  # no copied color values
     assert "var(--color-high-contrast)" in source and "var(--color-dimmed-charcoal)" in source
     assert "background" not in source.split("<style>")[1]  # no own background on the card
+
+
+def test_heading_text_replaces_the_title(draw):
+    assert "<h2 class=\"module-header\">Barnens lunch</h2>" in draw(heading="Barnens lunch")

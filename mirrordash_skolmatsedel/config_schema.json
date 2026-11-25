@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "School Lunch",
-  "requires_mirrordash": "0.13",
+  "requires_mirrordash": "0.21",
   "description": "School lunch menus, day by day, from Skolmaten or Mateo.",
   "type": "object",
   "properties": {
@@ -12,6 +12,7 @@
       "default": [],
       "items": {
         "type": "object",
+        "title": "School",
         "properties": {
           "provider": {
             "type": "string",
@@ -35,7 +36,7 @@
           },
           "short_name": {
             "type": "string",
-            "title": "Short Name",
+            "title": "Short name",
             "description": "Optional. Shown instead of the school's name, for example a child's name. Leave empty to show the school's name.",
             "maxLength": 40
           }
@@ -48,7 +49,7 @@
       "default": 3,
       "minimum": 1,
       "maximum": 10,
-      "title": "Days To Show",
+      "title": "Days to show",
       "description": "How many school days to show, counted from the first day shown.",
       "help": "Weekends are skipped. Days without a menu are left out. Skolmaten publishes only the current week, so with Skolmaten you see at most the days left of this week; Mateo publishes further ahead."
     },
@@ -61,22 +62,16 @@
         "Today stays all day",
         "After lunch, today is dimmed"
       ],
-      "title": "After Lunch",
+      "title": "After lunch",
       "description": "What to do with today's menu once lunch is over."
     },
     "switch_time": {
       "type": "string",
       "format": "time",
       "default": "13:00",
-      "title": "Lunch Is Over At",
+      "title": "Lunch is over at",
       "description": "The time when lunch counts as over. Blank means 13:00.",
       "show_if": {"after_lunch": ["next_day", "dim"]}
-    },
-    "show_header": {
-      "type": "boolean",
-      "default": true,
-      "title": "Show Header",
-      "description": "Show or hide the module's title."
     }
   },
   "required": ["schools"]

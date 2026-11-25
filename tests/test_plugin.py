@@ -47,7 +47,7 @@ async def test_two_schools_from_two_providers_are_shown_day_by_day():
     assert [s["name"] for s in today] == ["Fridhemsskolan", "Alva"]  # the short name replaces the school's name
     assert today[0]["dishes"][0].startswith("Pankopanerad fisk")
     assert today[1]["dishes"][0].startswith("Kikärtsgryta")
-    assert shown["error"] is None and shown["show_header"] is True
+    assert shown["error"] is None and "show_header" not in shown
 
 
 @pytest.mark.asyncio

@@ -27,11 +27,10 @@ No API key is needed. In the module's settings:
 
 | Setting | What it does |
 | :--- | :--- |
-| **Schools** | One row per school: **Provider** (Skolmaten or Mateo), then **Municipality**, then **School** (each list follows the one before it), and an optional **Short Name** shown instead of the school's name. If the school isn't in one provider, try the other. |
-| **Days To Show** | How many school days to show, counted from the first day shown. Days without a menu are left out. **Skolmaten publishes only the current week**, so with Skolmaten you see at most the days left of this week; Mateo publishes further ahead. |
-| **After Lunch** | What happens to today's menu once lunch is over. *After lunch, start from the next school day* (the default; on a Friday that is Monday), *Today stays all day*, or *After lunch, today is dimmed*. |
-| **Lunch Is Over At** | When lunch counts as over, 13:00 unless you change it. |
-| **Show Header** | Show or hide the module's title. |
+| **Schools** | One row per school: **Provider** (Skolmaten or Mateo), then **Municipality**, then **School** (each list follows the one before it), and an optional **Short name** shown instead of the school's name. If the school isn't in one provider, try the other. |
+| **Days to show** | How many school days to show, counted from the first day shown. Days without a menu are left out. **Skolmaten publishes only the current week**, so with Skolmaten you see at most the days left of this week; Mateo publishes further ahead. |
+| **After lunch** | What happens to today's menu once lunch is over. *After lunch, start from the next school day* (the default; on a Friday that is Monday), *Today stays all day*, or *After lunch, today is dimmed*. |
+| **Lunch is over at** | When lunch counts as over, 13:00 unless you change it. |
 
 ## Data sources
 
